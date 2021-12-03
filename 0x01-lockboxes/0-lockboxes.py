@@ -14,12 +14,12 @@ def canUnlockAll(boxes):
     from copy import Deepcopy
 
     # checks if boxes is a positive integer and a list
-    if type(boxes) != list or len(boxes) < 1:
+    if type(boxes) is not list or len(boxes) < 1:
         return False
 
     # checking that all boxes have a valid key
     for x in boxes:
-        if type(box) != list:
+        if type(box) is not list:
             return False
 
     # deepcopy allows creation of copies without altering originals
