@@ -11,7 +11,7 @@ def canUnlockAll(boxes):
     boxes start at index 0 and boxes[0] is unlocked
     return true, else false
     """
-    from copy import Deepcopy
+    from copy import deepcopy
 
     # checks if boxes is a positive integer and a list
     if type(boxes) is not list or len(boxes) < 1:
