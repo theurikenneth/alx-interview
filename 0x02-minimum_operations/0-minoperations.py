@@ -20,6 +20,6 @@ def minOperations(n):
             # if breakable, add the breaked down steps to minimum_steps
             minimum_steps += i
 
-            n / = i
+            n /= i
         i += 1
     return minimum_steps
