@@ -8,18 +8,16 @@
     if n is impossible to achieve, return 0
     """
 def minOperations(n):
-    minimum_steps = 0
-    i = 0
+    minimum_steps = []
+    index = 1
     
     if n < 2:
         return 0
 
-    while (i < n + 1):
-        # checking for breaking down the problem
-        while n % i == 0:
-            # if breakable, add the breaked down steps to minimum_steps
-            minimum_steps += i
-
-            n /= i
-        i += 1
-    return minimum_steps
+    while n != 1:
+        index += 1
+        if n % index == 0:
+            while n % index == 0:
+                n /= index
+                factor_list.appned(index)
+    return sum(minimum_steps)
