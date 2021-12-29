@@ -10,16 +10,15 @@
 
 
 def minOperations(n):
-    minimum_steps = []
-    index = 1
 
     if n < 2:
         return 0
+    numbr, index, operations = n, 2, 0
 
-    while n != 1:
-        index += 1
-        if n % index == 0:
-            while n % index == 0:
-                n /= index
-                factor_list.appned(index)
-    return sum(minimum_steps)
+    while numbr > 1:
+        if numbr % index == 0:
+            numbr = numbr / index
+            operations = operations + div
+        else:
+            index += 1
+    return operations
