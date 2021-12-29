@@ -10,6 +10,10 @@
 
 
 def minOperations(n):
+    """
+    Single character H
+    Fewest number of operations
+    """
 
     if n < 2:
         return 0
