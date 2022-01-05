@@ -30,13 +30,14 @@ def log_parsing():
 if __name__ == "__main__":
     counter = 0
     try:
-        for i in stdin:
+        for line in stdin:
             try:
-                line_item = i.split()
+                line_item = line.split()
                 total_size += int(line_item[-1])
                 if line_item[-2] in status_code:
                     status_code[line_item[-2]] += 1
-
+            except:
+                pass
             if counter == 9:
                 log_parsing()
                 counter = -1
