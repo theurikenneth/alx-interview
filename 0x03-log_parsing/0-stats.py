@@ -4,43 +4,43 @@
 
 from sys import stdin
 
+status_code = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "401": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0
+}
+
+total_size = 0
+
+
+def log_parsing():
+    print("File size: {}".format(total_size))
+    for status in sorted(status_code.keys()):
+        if status_code[status]:
+            print("{}: {}".format(status, status_code[status]))
+
+
 if __name__ == "__main__":
-    total_size = 0
-    status_code = {}
-    possible_status_code = [
-        "200", "301", "400", "401", "403", "404", "405", "500"]
-    for possible_status in possible_status_code:
-        status_code[possible_status] = 0
     counter = 0
     try:
-        for x in stdin:
+        for i in stdin:
             try:
-                args = x.split(" ")
-                if len(args) != 9:
-                    pass
-                if args[-2] in possible_status_codes:
-                    status_code[args[-2]] += 1
-                if args[-1][-1] == '\n':
-                    args[-1][:-1]
-                total_size += int(args[-1])
+                line_item = i.split()
+                total_size += int(line_item[-1])
+                if line_item[-2] in status_code:
+                    status_code[line_item[-2]] += 1
             except:
                 pass
+            if counter == 9:
+                log_parsing()
+                counter = -1
             counter += 1
-            if counter % 10 == 0:
-                print("File size: {}".format(total_size))
-                for posible_status in sorted(status_codes.keys()):
-                    if status_codes[possible_status] != 0:
-                        print("{}: {}".format(
-                            possible_status, status_codes[possible_status]))
-        print("File size: {}".format(total_size))
-        for possible_status in sorted(status_codes.keys()):
-            if status_codes[possible_status] != 0:
-                print("{}: {}".format(possible_status,
-                                      status_codes[possible_status]))
-    except KeyboardInterrupt as err:
-        print("File size: {}".format(total_size))
-        for possible_status in sorted(status_codes.keys()):
-            if status_codes[possible_status] != 0:
-                print("{}: {}".format(possible_status,
-                                      status_codes[possible_status]))
+    except KeyboardInterrupt:
+        log_parsing()
         raise
+    log_parsing()
