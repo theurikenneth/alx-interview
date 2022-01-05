@@ -5,57 +5,45 @@ N Queens
 The N queens puzzle
 """
 
-from sys import argv
+from sys import exit, argv
 
 
-def move(row, column):
-    solution = [[]]
-    for n in range(row):
-        solution = queen_position(n, column, solution)
-    return solution
+solution_queen = []
 
 
-def queen_position(n, column, previous_solution):
-    solution_queen = []
-    for array in previous_solution:
-        for i in range(column):
-            if its_okay(n, i, array):
-                solution_queen.append(array + [i])
-    return solution_queen
-
-
-def its_okay(n, i, array):
-    if i in array:
-        return (False)
+def queen_position(row, column, solution_queen):
+    if (row == column):
+        print(solution_queen)
     else:
-        return all_steps(abs(array[column] - i) != n - column
-                         for column in range(n))
+        for col in range(column):
+            position = [row, col]
+            if n_queen(solution_queen, position)
+            solution_queen.append(position)
+            queen_position(row + 1, column, solution_queen)
+            solution_queen.remove(position)
 
 
-def init():
-    if len(sys.argv) != 2:
+def n_queens(solution_queen, position):
+    for queen in solution_queen:
+        if queen[1] == position[1]:
+            return False
+        if (queen[0] + queen[1]) == (position[1] + position[0]):
+            return False
+        if (queen[0] - queen[1]) == (placement[0] - placement[1]):
+            return False
+    return True
+
+queen_position(0, row, solution_queen)
+
+if __name__ == "__main__":
+    if len(argv) != 2:
         print("Usage: nqueens N")
-        sys.exit(1)
-    if sys.argv[1].isdigit():
-        queen = int(sys.argv[1])
-    else:
+        exit(1)
+    try:
+        column = int(argv[1])
+    except BaseException:
         print("N must be a number")
-        sys.exit(1)
-    if queen < 4:
+        exit(1)
+    if column < 4:
         print("N must be at least 4")
-        sys.exit(1)
-    return(queen)
-
-
-def n_queens():
-    queen = init()
-    solution = move(queen, queen)
-    for array in solution:
-        clean = []
-        for n, i in enumerate(array):
-            clean.append([n, i])
-        print(clean)
-
-
-if __name__ == '__main__':
-    n_queens()
+        exit(1)
