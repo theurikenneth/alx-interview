@@ -8,11 +8,11 @@ def rotate_2d_matrix(matrix):
     """
     rotates two dimension matrix and returns nothing
     """
-    length = len(matrix)
-    for k in range(int(length / 2)):
-        j = (length - k - 1)
+    l = len(matrix)
+    for k in range(int(l / 2)):
+        j = (l - k - 1)
         for i in range(k, j):
-            y = (length - 1 - i)
+            y = (l - 1 - i)
             # checking the number
             temp_number = matrix[k][i]
             # changing the top to the left
@@ -20,6 +20,6 @@ def rotate_2d_matrix(matrix):
             # moving the left to bottom
             matrix[y][k] = matrix[j][y]
             # moving bottom to the right
-            matrix[j][y] = matrix[l][j]
+            matrix[j][y] = matrix[i][j]
             # moving the right to the top
             matrix[i][j] = temp_number
