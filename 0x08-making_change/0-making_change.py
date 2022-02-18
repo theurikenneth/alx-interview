@@ -16,7 +16,7 @@ def makeChange(coins, total):
     for i in coins:
         temp = int(total / i)
         total -= (temp * i)
-        make_change = temp
+        make_change += temp
         if total == 0:
             return make_change
     if total != 0:
